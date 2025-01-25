@@ -1,5 +1,5 @@
 <template>
-  <div class="article">
+  <div class="article" v-if="article">
     <div class="article__top">
       <img :src="getImageUrl(article.image)" class="article__img" alt="" />
     </div>
@@ -12,14 +12,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Article from '@/components/Articles/Item.vue'
 
 const props = defineProps({
   article: Object,
 })
 
-function getImageUrl(name) {
+function getImageUrl(name: string) {
   return new URL(`@/assets/article.jpg`, import.meta.url).href
 }
 </script>

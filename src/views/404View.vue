@@ -5,6 +5,6 @@
     <p><RouterLink to="/">Вернуться на главную</RouterLink></p>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import Title from '@/components/UI/AppTitle.vue'
 </script>

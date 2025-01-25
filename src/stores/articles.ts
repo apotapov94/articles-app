@@ -1,6 +1,14 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
+export interface Article {
+  id: number
+  title: string
+  keyword: string
+  text: string
+  image: string
+}
+
 export const useArticlesStore = defineStore('articles', {
   state: () => ({
     articles: [
@@ -235,16 +243,18 @@ export const useArticlesStore = defineStore('articles', {
     },
   },
   getters: {
-    getArticleByKeyword: (state) => (keyword: string) => {
-      return state.articles.filter((article) => article.keyword == keyword)[0]
-    },
-    getArticlesPage: (state) => {
+    getArticleByKeyword:
+      (state) =>
+      (keyword: string | string[]): Article => {
+        return state.articles.filter((article) => article.keyword == keyword)[0]
+      },
+    getArticlesPage: (state): Array<Article> => {
       let start = state.pagination.elemsOnPage * (state.pagination.curPage - 1)
       let end = start + state.pagination.elemsOnPage
       let result = state.articles.slice(start, end)
       return result
     },
-    getLastPage: (state) => {
+    getLastPage: (state): number => {
       let lastPageIndex
       if (state.articles.length % state.pagination.elemsOnPage) {
         lastPageIndex = Math.floor(state.articles.length / state.pagination.elemsOnPage) + 1
@@ -253,19 +263,19 @@ export const useArticlesStore = defineStore('articles', {
       }
       return lastPageIndex
     },
-    getPrevPrevPage: (state) => {
+    getPrevPrevPage: (state): number => {
       let page = state.pagination.curPage - 2
       return page
     },
-    getPrevPage: (state) => {
+    getPrevPage: (state): number => {
       let page = state.pagination.curPage - 1
       return page
     },
-    getNextPage: (state) => {
+    getNextPage: (state): number => {
       let page = state.pagination.curPage + 1
       return page
     },
-    getNextNextPage: (state) => {
+    getNextNextPage: (state): number => {
       let page = state.pagination.curPage + 2
       return page
     },

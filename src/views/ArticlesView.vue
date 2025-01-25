@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useArticlesStore } from '@/stores/articles'
 import ArticlesList from '@/components/Articles/List.vue'
 import Pagination from '@/components/UI/Pagination.vue'

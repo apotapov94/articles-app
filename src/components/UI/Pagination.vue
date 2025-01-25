@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useArticlesStore } from '@/stores/articles'
 const store = useArticlesStore()
 console.log(store.getLastPage - 2)

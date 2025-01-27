@@ -249,9 +249,9 @@ export const useArticlesStore = defineStore('articles', {
         return state.articles.filter((article) => article.keyword == keyword)[0]
       },
     getArticlesPage: (state): Array<Article> => {
-      let start = state.pagination.elemsOnPage * (state.pagination.curPage - 1)
-      let end = start + state.pagination.elemsOnPage
-      let result = state.articles.slice(start, end)
+      const start = state.pagination.elemsOnPage * (state.pagination.curPage - 1)
+      const end = start + state.pagination.elemsOnPage
+      const result = state.articles.slice(start, end)
       return result
     },
     getLastPage: (state): number => {
@@ -264,19 +264,19 @@ export const useArticlesStore = defineStore('articles', {
       return lastPageIndex
     },
     getPrevPrevPage: (state): number => {
-      let page = state.pagination.curPage - 2
+      const page = state.pagination.curPage - 2
       return page
     },
     getPrevPage: (state): number => {
-      let page = state.pagination.curPage - 1
+      const page = state.pagination.curPage - 1
       return page
     },
     getNextPage: (state): number => {
-      let page = state.pagination.curPage + 1
+      const page = state.pagination.curPage + 1
       return page
     },
     getNextNextPage: (state): number => {
-      let page = state.pagination.curPage + 2
+      const page = state.pagination.curPage + 2
       return page
     },
   },
